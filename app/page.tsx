@@ -3,9 +3,11 @@
 import { motion, useScroll, useSpring } from "framer-motion";
 import { Navbar } from "@/components/navbar";
 import { Hero } from "@/components/hero";
+import { ClientLogos } from "@/components/client-logos";
 import { Services } from "@/components/services";
 import { Work } from "@/components/work";
 import { AboutContent } from "@/components/about-content";
+import { Testimonials } from "@/components/testimonials";
 import { Founder } from "@/components/founder";
 import { ContactCTA } from "@/components/contact-cta";
 import { Footer } from "@/components/footer";
@@ -19,7 +21,7 @@ export default function Home() {
   });
 
   return (
-    <div className="relative bg-black text-white selection:bg-white selection:text-black font-inter">
+    <div className="relative bg-black text-white selection:bg-white selection:text-black font-inter overflow-x-hidden">
       {/* Scroll Progress Indicator */}
       <motion.div
         className="fixed top-0 left-0 right-0 h-1 bg-white origin-left z-[100]"
@@ -29,22 +31,28 @@ export default function Home() {
       <Navbar />
 
       <main>
-        {/* Section 01: Hero (Black) */}
+        {/* Section 01: Hero (Kinetic) */}
         <Hero />
 
-        {/* Section 02: Services (Black with cinematic image reveals) */}
+        {/* Section 01b: Social Proof */}
+        <ClientLogos />
+
+        {/* Section 02: Services (Interactive List) */}
         <Services />
 
-        {/* Section 03: Selected Work (White - Flipping the palette) */}
+        {/* Section 03: Selected Work (Horizontal Scroll) */}
         <Work />
 
         {/* Section 04: Philosophy (White) */}
         <AboutContent />
 
-        {/* Section 05: Founder (Black - Flipping back) */}
+        {/* Section 04b: Testimonials (Validation) */}
+        <Testimonials />
+
+        {/* Section 05: Founder (Black) */}
         <Founder />
 
-        {/* Section 06: Contact (White - The provided collaborate image section) */}
+        {/* Section 06: Contact */}
         <ContactCTA />
       </main>
 

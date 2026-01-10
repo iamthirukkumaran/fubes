@@ -1,92 +1,99 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 
 const services = [
     {
-        title: "Branding",
-        description: "Developing visual systems that resonate across all digital touchpoints."
+        num: "01",
+        title: "Strategy & Branding",
+        desc: "Defining the core DNA of future-ready brands.",
+        tags: ["Brand Identity", "Positioning", "Voice"]
     },
     {
+        num: "02",
         title: "Web Experience",
-        description: "Engineering high-speed, interactive platforms with uncompromising precision."
+        desc: "Immersive, high-performance digital platforms.",
+        tags: ["Development", "Motion", "3D"]
     },
     {
-        title: "Digital Growth",
-        description: "Concept-driven marketing designed to amplify presence and impact."
+        num: "03",
+        title: "Product Design",
+        desc: "Functional interfaces that delight and convert.",
+        tags: ["UI/UX", "Prototyping", "Design Systems"]
+    },
+    {
+        num: "04",
+        title: "Content Production",
+        desc: "Visual storytelling for the digital age.",
+        tags: ["Art Direction", "3D Motion", "Copy"]
     }
 ];
 
 export function Services() {
-    const containerRef = useRef<HTMLElement>(null);
+    const [hovered, setHovered] = useState<number | null>(null);
 
     return (
-        <section ref={containerRef} className="bg-white py-40">
-            <div className="px-6 mb-40 flex flex-col items-center">
-                <motion.span
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    className="text-[11px] font-bold uppercase tracking-[0.6em] text-zinc-400 mb-8"
-                >
-                    Expertise & Craft
-                </motion.span>
-                <motion.h2
-                    initial={{ y: 100, opacity: 0 }}
-                    whileInView={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                    className="text-center text-6xl font-black md:text-8xl lg:text-9xl tracking-[-0.05em] leading-[0.85] text-black"
-                >
-                    DRIVING THE <br />
-                    <span className="italic text-zinc-200" style={{ WebkitTextStroke: "1px rgba(0,0,0,0.05)" }}>FUTURE</span>
-                </motion.h2>
-            </div>
+        <section className="relative py-40 bg-zinc-950 px-6">
+            <div className="mx-auto max-w-7xl">
+                <div className="mb-20">
+                    <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-zinc-500">
+                        Capabilities
+                    </span>
+                    <h2 className="mt-4 text-5xl md:text-7xl font-black text-white tracking-tighter">
+                        OUR EXPERTISE
+                    </h2>
+                </div>
 
-            <div className="flex flex-col gap-px bg-zinc-100 border-y border-zinc-100">
-                {services.map((service, index) => (
-                    <ServiceItem key={service.title} service={service} index={index} />
-                ))}
+                <div className="flex flex-col">
+                    {services.map((service, index) => (
+                        <motion.div
+                            key={index}
+                            initial={{ borderBottomWidth: "1px", borderColor: "rgba(255,255,255,0.1)" }}
+                            whileHover={{ borderColor: "rgba(255,255,255,1)" }}
+                            onHoverStart={() => setHovered(index)}
+                            onHoverEnd={() => setHovered(null)}
+                            className="group relative flex flex-col items-start justify-between py-16 md:flex-row md:items-center transition-colors border-t border-white/10"
+                        >
+                            {/* Background Glow on Hover */}
+                            <div
+                                className={`absolute inset-0 bg-gradient-to-r from-zinc-900 to-transparent opacity-0 transition-opacity duration-500 ${hovered === index ? "opacity-100" : ""}`}
+                            />
+
+                            <div className="relative z-10 flex items-baseline gap-8 md:w-1/2">
+                                <span className="text-sm font-mono text-zinc-500">({service.num})</span>
+                                <h3 className="text-4xl md:text-6xl font-bold text-zinc-400 group-hover:text-white transition-colors duration-300">
+                                    {service.title}
+                                </h3>
+                            </div>
+
+                            <div className="relative z-10 mt-6 md:mt-0 md:w-1/2 flex flex-col md:items-end">
+                                <p className="text-lg text-zinc-500 group-hover:text-zinc-300 transition-colors max-w-sm md:text-right mb-4">
+                                    {service.desc}
+                                </p>
+                                <div className="flex gap-2 flex-wrap justify-end">
+                                    {service.tags.map(tag => (
+                                        <span key={tag} className="px-3 py-1 text-[10px] uppercase tracking-wider border border-white/10 rounded-full text-zinc-500 group-hover:text-white group-hover:border-white/30 transition-all">
+                                            {tag}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <motion.div
+                                className="absolute right-8 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                                initial={{ x: -20 }}
+                                whileHover={{ x: 0 }}
+                            >
+                                <ArrowUpRight className="w-12 h-12 text-white" />
+                            </motion.div>
+                        </motion.div>
+                    ))}
+                    {/* Closing border */}
+                    <div className="border-t border-white/10" />
+                </div>
             </div>
         </section>
-    );
-}
-
-function ServiceItem({ service, index }: { service: typeof services[0], index: number }) {
-    const ref = useRef<HTMLDivElement>(null);
-    const { scrollYProgress } = useScroll({
-        target: ref,
-        offset: ["start end", "end start"]
-    });
-
-    const textX = useTransform(scrollYProgress, [0, 1], [index % 2 === 0 ? -100 : 100, index % 2 === 0 ? 100 : -100]);
-    const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.3, 1, 1, 0.3]);
-
-    return (
-        <motion.div
-            ref={ref}
-            style={{ opacity }}
-            className="relative flex h-[50vh] md:h-[60vh] w-full items-center justify-center overflow-hidden bg-white group"
-        >
-            <div className="relative z-10 flex flex-col items-center text-center px-6">
-                <motion.h3
-                    style={{ x: textX }}
-                    className="text-6xl font-black uppercase tracking-tighter md:text-9xl lg:text-[10rem] text-black transition-all group-hover:scale-105"
-                >
-                    {service.title}
-                </motion.h3>
-                <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 }}
-                    className="mt-8 max-w-lg text-lg font-light text-zinc-500 md:text-2xl"
-                >
-                    {service.description}
-                </motion.p>
-            </div>
-
-            <div className="absolute right-10 md:right-20 top-10 md:top-20 z-0">
-                <span className="text-4xl font-black text-black/[0.03] md:text-[15rem] italic leading-none">0{index + 1}</span>
-            </div>
-        </motion.div>
     );
 }

@@ -37,7 +37,7 @@ export function ContactCTA() {
                         >
                             We're building the next generation of digital legacies. Join the frontier and architect your evolution.
                         </motion.p>
-                        <div className="mt-20 flex justify-center">
+                        <div className="mt-20 flex flex-col items-center gap-12">
                             <Link
                                 href="/contact"
                                 className="group relative inline-flex h-24 items-center justify-center rounded-full bg-black px-24 text-[13px] font-black uppercase tracking-[0.3em] text-white transition-all hover:scale-105"
@@ -50,6 +50,16 @@ export function ContactCTA() {
                                     transition={{ duration: 0.4 }}
                                 />
                             </Link>
+
+                            <div className="flex gap-12 text-sm font-medium tracking-widest uppercase text-zinc-500">
+                                <a href="mailto:hello@fubes.com" className="hover:text-black transition-colors">
+                                    hello@fubes.com
+                                </a>
+                                <span className="text-zinc-300">•</span>
+                                <a href="tel:+15550000000" className="hover:text-black transition-colors">
+                                    +1 (555) 000-0000
+                                </a>
+                            </div>
                         </div>
                     </motion.div>
                 </div>

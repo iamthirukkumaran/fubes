@@ -34,7 +34,10 @@ export const metadata: Metadata = {
   description: "A digital agency that builds brands, websites, UI/UX designs, and runs online marketing to grow businesses.",
 };
 
+import { Preloader } from "@/components/preloader";
+import { SmoothScroller } from "@/components/smooth-scroller";
 import PageTransition from "@/components/page-transition";
+import "@/lib/add-lenis-styles.css"; // Ensure this exists or add styles directly
 
 export default function RootLayout({
   children,
@@ -44,9 +47,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} ${montserrat.variable} ${inter.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} ${montserrat.variable} ${inter.variable} antialiased bg-black`}
       >
-        <PageTransition>{children}</PageTransition>
+        <Preloader />
+        <SmoothScroller>
+          <PageTransition>{children}</PageTransition>
+        </SmoothScroller>
       </body>
     </html>
   );
