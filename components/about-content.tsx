@@ -6,22 +6,22 @@ import Image from "next/image";
 
 const philosophy = [
     {
-        tag: "Approach",
-        title: "The Visionary Frame",
-        content: "We provide comprehensive branding solutions that bridge the gap between imagination and digital reality.",
-        img: "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?q=80&w=2668&auto=format&fit=crop"
+        tag: "Studio",
+        title: "The Product Forge",
+        content: "FUBES is a creative product studio building a new generation of digital tools and experiences. What started as an idea to ship one great product has grown into a larger vision — a home for bold, well-crafted software that people actually love using.",
+        img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2670&auto=format&fit=crop"
     },
     {
-        tag: "Manifesto",
-        title: "Concept Over Form",
-        content: "Every project starts with a core concept. We don't just build; we craft narratives that strengthen brand identities.",
-        img: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop"
+        tag: "DNA",
+        title: "Fast. Focused. Unapologetic.",
+        content: "Under FUBES, every product is built with the same DNA. We don't wait for permission to build something new. From AI-powered video tools to multiplayer games, we build the software we want to see in the world.",
+        img: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=2670&auto=format&fit=crop"
     },
     {
-        tag: "Delivery",
-        title: "Artifact Excellence",
-        content: "Our work thrives where the user interacts. We focus on the final digital product as the primary habitat for your brand.",
-        img: "https://images.unsplash.com/photo-1604871000636-074fa5117945?q=80&w=2668&auto=format&fit=crop"
+        tag: "Ecosystem",
+        title: "PalmPilot, Scrolla & Beyond",
+        content: "Each product stands on its own, but together they represent a single belief — that the best software comes from people who genuinely care about what they're making. Currently shipping PalmPilot and Scrolla, with 10+ experiments in the pipe.",
+        img: "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?q=80&w=2670&auto=format&fit=crop"
     }
 ];
 
@@ -36,7 +36,7 @@ export function AboutContent() {
     const rotate = useTransform(scrollYProgress, [0, 1], [-5, 5]);
 
     return (
-        <section ref={containerRef} className="py-40 px-6 bg-white overflow-hidden">
+        <section id="mission" ref={containerRef} className="py-40 px-6 bg-[#050505] overflow-hidden">
             <div className="mx-auto max-w-7xl">
                 <div className="grid gap-12 lg:grid-cols-2 lg:gap-24 items-start">
                     {/* Sticky Left Column */}
@@ -47,22 +47,22 @@ export function AboutContent() {
                             viewport={{ once: true }}
                             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                         >
-                            <span className="text-[11px] font-bold uppercase tracking-[0.8em] text-zinc-400 mb-8 block">
-                                System // Philosophy
+                            <span className="text-[10px] font-bold uppercase tracking-[0.8em] text-zinc-800 mb-8 block">
+                                SYSTEM // MISSION
                             </span>
-                            <h2 className="text-6xl font-black md:text-7xl lg:text-[7rem] leading-[0.8] tracking-tighter text-black mb-12 relative z-10">
-                                DRIVEN BY <br />
+                            <h2 className="text-6xl font-black md:text-7xl lg:text-[10rem] leading-[0.75] tracking-tighter text-white mb-12 relative z-10">
+                                BORN <br />
                                 <motion.span
-                                    style={{ rotate, WebkitTextStroke: "1px rgba(0,0,0,0.1)" }}
-                                    className="inline-block text-transparent bg-clip-text bg-gradient-to-b from-zinc-100 to-white italic"
+                                    style={{ rotate }}
+                                    className="inline-block text-zinc-900 italic"
                                 >
-                                    PURPOSE
+                                    CREATIVE
                                 </motion.span>
                             </h2>
                         </motion.div>
 
                         {/* Interactive Image Display */}
-                        <div className="relative aspect-[4/3] w-full max-w-md overflow-hidden rounded-2xl shadow-2xl mt-auto">
+                        <div className="relative aspect-[4/3] w-full max-w-md overflow-hidden rounded-2xl shadow-2xl mt-auto border border-white/5">
                             <AnimatePresence mode="wait">
                                 <motion.div
                                     key={activeCard}
@@ -76,17 +76,17 @@ export function AboutContent() {
                                         src={philosophy[activeCard].img}
                                         alt={philosophy[activeCard].title}
                                         fill
-                                        className="object-cover"
+                                        className="object-cover opacity-60"
                                     />
                                     {/* Overlay */}
-                                    <div className="absolute inset-0 bg-black/10 mix-blend-multiply" />
+                                    <div className="absolute inset-0 bg-black/40" />
                                 </motion.div>
                             </AnimatePresence>
                         </div>
                     </div>
 
                     {/* Right Scrollable Column */}
-                    <div className="flex flex-col gap-40 lg:pt-32 pb-32">
+                    <div className="flex flex-col gap-32 lg:pt-32 pb-32">
                         {philosophy.map((item, index) => (
                             <motion.div
                                 key={item.tag}
@@ -95,15 +95,15 @@ export function AboutContent() {
                                 viewport={{ once: true, margin: "-20% 0px -20% 0px" }}
                                 onViewportEnter={() => setActiveCard(index)}
                                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                                className="group relative pl-8 border-l border-zinc-200 hover:border-black transition-colors duration-500"
+                                className="group relative pl-12 border-l border-zinc-900 hover:border-white transition-colors duration-500"
                             >
-                                <span className="mb-6 block text-xs font-bold uppercase tracking-[0.4em] text-zinc-400 group-hover:text-black transition-colors">
+                                <span className="mb-8 block text-xs font-bold uppercase tracking-[0.5em] text-zinc-800 group-hover:text-white transition-colors">
                                     {item.tag}
                                 </span>
-                                <h3 className="mb-8 text-4xl md:text-5xl font-black tracking-tighter text-black">
+                                <h3 className="mb-10 text-4xl md:text-6xl font-black tracking-tighter text-white">
                                     {item.title}
                                 </h3>
-                                <p className="text-lg md:text-xl text-zinc-600 font-light leading-relaxed max-w-lg">
+                                <p className="text-xl md:text-2xl text-zinc-500 group-hover:text-zinc-300 transition-colors font-light leading-relaxed max-w-lg">
                                     {item.content}
                                 </p>
                             </motion.div>

@@ -22,7 +22,7 @@ export function Founder() {
         <section
             ref={containerRef}
             id="founder"
-            className="relative min-h-[140vh] bg-black overflow-hidden flex items-center justify-center py-40"
+            className="relative min-h-screen bg-black overflow-hidden flex items-center justify-center py-24"
         >
             {/* Ambient Background Elements */}
             <div className="absolute inset-0 pointer-events-none">

@@ -8,9 +8,9 @@ import { cn } from "@/lib/utils";
 
 const links = [
     { label: "Home", href: "/" },
-    { label: "About", href: "/studio" },
-    { label: "Design House", href: "/services", badge: "New" },
-    { label: "Contact", href: "/contact" },
+    { label: "Mission", href: "/#mission" },
+    { label: "The Forge", href: "/#forge", badge: "Live" },
+    { label: "Join Us", href: "/#join" },
 ];
 
 export function Navbar() {
@@ -66,12 +66,12 @@ export function Navbar() {
                     </div>
 
                     <Link
-                        href="/contact"
+                        href="/join"
                         className="group relative ml-4 overflow-hidden rounded-full bg-white px-8 py-3 text-[10px] font-black uppercase tracking-[0.2em] text-black transition-all duration-500 hover:scale-105"
                     >
-                        <span className="relative z-10">Talk</span>
+                        <span className="relative z-10">Sync</span>
                         <div className="absolute inset-0 z-0 -translate-x-full bg-black transition-transform duration-500 group-hover:translate-x-0" />
-                        <span className="absolute inset-0 z-10 flex items-center justify-center text-white opacity-0 transition-opacity duration-500 group-hover:opacity-100">Talk</span>
+                        <span className="absolute inset-0 z-10 flex items-center justify-center text-white opacity-0 transition-opacity duration-500 group-hover:opacity-100">Sync</span>
                     </Link>
                 </nav>
             </motion.header>

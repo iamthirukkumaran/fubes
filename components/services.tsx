@@ -7,27 +7,31 @@ import { ArrowUpRight } from "lucide-react";
 const services = [
     {
         num: "01",
-        title: "Strategy & Branding",
-        desc: "Defining the core DNA of future-ready brands.",
-        tags: ["Brand Identity", "Positioning", "Voice"]
+        title: "AI Labs",
+        color: "#3b82f6",
+        desc: "Building the next generation of intelligent tools, starting with PalmPilot.",
+        tags: ["LLMs", "Generative Art", "Agents"]
     },
     {
         num: "02",
-        title: "Web Experience",
-        desc: "Immersive, high-performance digital platforms.",
-        tags: ["Development", "Motion", "3D"]
+        title: "Social Flux",
+        color: "#f97316",
+        desc: "Redefining how we connect and scroll. Scrolla is just the beginning.",
+        tags: ["Networking", "Real-time", "Social UI"]
     },
     {
         num: "03",
-        title: "Product Design",
-        desc: "Functional interfaces that delight and convert.",
-        tags: ["UI/UX", "Prototyping", "Design Systems"]
+        title: "Game Forge",
+        color: "#22c55e",
+        desc: "Immersive multiplayer experiences that push the boundaries of the browser.",
+        tags: ["WebGPU", "Multiplayer", "3D Worlds"]
     },
     {
         num: "04",
-        title: "Content Production",
-        desc: "Visual storytelling for the digital age.",
-        tags: ["Art Direction", "3D Motion", "Copy"]
+        title: "Creative Tools",
+        color: "#a855f7",
+        desc: "Software designed for people who genuinely care about what they're making.",
+        tags: ["Design Tools", "Workflows", "Video"]
     }
 ];
 
@@ -35,14 +39,14 @@ export function Services() {
     const [hovered, setHovered] = useState<number | null>(null);
 
     return (
-        <section className="relative py-40 bg-zinc-950 px-6">
+        <section className="relative py-40 bg-[#050505] px-6 border-t border-white/5">
             <div className="mx-auto max-w-7xl">
                 <div className="mb-20">
-                    <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-zinc-500">
-                        Capabilities
+                    <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-red-500">
+                        The Ecosystem
                     </span>
                     <h2 className="mt-4 text-5xl md:text-7xl font-black text-white tracking-tighter">
-                        OUR EXPERTISE
+                        THE PRODUCT ENGINE
                     </h2>
                 </div>
 
@@ -50,31 +54,42 @@ export function Services() {
                     {services.map((service, index) => (
                         <motion.div
                             key={index}
-                            initial={{ borderBottomWidth: "1px", borderColor: "rgba(255,255,255,0.1)" }}
-                            whileHover={{ borderColor: "rgba(255,255,255,1)" }}
+                            initial={{ borderBottomWidth: "1px", borderColor: "rgba(255,255,255,0.05)" }}
+                            whileHover={{ borderColor: service.color }}
                             onHoverStart={() => setHovered(index)}
                             onHoverEnd={() => setHovered(null)}
-                            className="group relative flex flex-col items-start justify-between py-16 md:flex-row md:items-center transition-colors border-t border-white/10"
+                            className="group relative flex flex-col items-start justify-between py-20 md:flex-row md:items-center transition-all duration-500 border-t border-white/5"
                         >
                             {/* Background Glow on Hover */}
                             <div
-                                className={`absolute inset-0 bg-gradient-to-r from-zinc-900 to-transparent opacity-0 transition-opacity duration-500 ${hovered === index ? "opacity-100" : ""}`}
+                                className="absolute inset-0 opacity-0 transition-opacity duration-700 pointer-events-none"
+                                style={{ 
+                                    background: `linear-gradient(90deg, ${service.color}11, transparent)`,
+                                    opacity: hovered === index ? 1 : 0
+                                }}
                             />
 
                             <div className="relative z-10 flex items-baseline gap-8 md:w-1/2">
-                                <span className="text-sm font-mono text-zinc-500">({service.num})</span>
-                                <h3 className="text-4xl md:text-6xl font-bold text-zinc-400 group-hover:text-white transition-colors duration-300">
+                                <span className="text-sm font-mono text-zinc-800 transition-colors group-hover:text-white">({service.num})</span>
+                                <h3 className="text-4xl md:text-7xl font-black text-zinc-900 group-hover:text-white transition-all duration-500 tracking-tighter">
                                     {service.title}
                                 </h3>
                             </div>
 
-                            <div className="relative z-10 mt-6 md:mt-0 md:w-1/2 flex flex-col md:items-end">
-                                <p className="text-lg text-zinc-500 group-hover:text-zinc-300 transition-colors max-w-sm md:text-right mb-4">
+                            <div className="relative z-10 mt-8 md:mt-0 md:w-1/2 flex flex-col md:items-end">
+                                <p className="text-lg text-zinc-500 group-hover:text-zinc-300 transition-colors max-w-sm md:text-right mb-6 font-light leading-relaxed">
                                     {service.desc}
                                 </p>
-                                <div className="flex gap-2 flex-wrap justify-end">
+                                <div className="flex gap-3 flex-wrap justify-end">
                                     {service.tags.map(tag => (
-                                        <span key={tag} className="px-3 py-1 text-[10px] uppercase tracking-wider border border-white/10 rounded-full text-zinc-500 group-hover:text-white group-hover:border-white/30 transition-all">
+                                        <span 
+                                            key={tag} 
+                                            className="px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest border border-white/5 rounded-full text-zinc-800 transition-all duration-500"
+                                            style={{ 
+                                                borderColor: hovered === index ? `${service.color}33` : "rgba(255,255,255,0.05)",
+                                                color: hovered === index ? service.color : ""
+                                            }}
+                                        >
                                             {tag}
                                         </span>
                                     ))}

@@ -30,8 +30,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Fubes | Digital Brand & Experience Agency",
-  description: "A digital agency that builds brands, websites, UI/UX designs, and runs online marketing to grow businesses.",
+  title: "FUBES | Creative Product Studio",
+  description: "Building a new generation of digital tools and experiences. Fast, focused, and unapologetically creative software that people actually love using.",
 };
 
 import { Preloader } from "@/components/preloader";
