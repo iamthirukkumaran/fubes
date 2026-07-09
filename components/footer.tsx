@@ -1,41 +1,86 @@
 "use client";
 
 import Link from "next/link";
+import { CONTACT_EMAIL, WHATSAPP_LINK, LINKEDIN_URL } from "./contact-cta";
+
+const nav = [
+  { label: "Work", href: "/work" },
+  { label: "Services", href: "/services" },
+  { label: "Studio", href: "/studio" },
+  { label: "Contact", href: "/contact" },
+];
+
+const socials = [
+  { label: "WhatsApp", href: WHATSAPP_LINK },
+  { label: "LinkedIn", href: LINKEDIN_URL },
+  { label: "Instagram", href: "#" },
+];
 
 export function Footer() {
-    return (
-        <footer className="relative bg-[#050505] pt-20 pb-10 px-4 md:px-10 overflow-hidden flex flex-col justify-between min-h-[80vh] md:min-h-[90vh] border-t border-white/5">
-            <div className="w-full max-w-[98%] mx-auto flex flex-col h-full justify-between">
-                
-                {/* Top Section */}
-                <div className="flex flex-col md:flex-row justify-between items-start gap-10">
-                    <div className="flex flex-wrap gap-x-6 md:gap-x-10 gap-y-4 max-w-2xl">
-                         <Link href="/" className="text-zinc-400 hover:text-white transition-colors text-sm md:text-lg font-medium">Home</Link>
-                         <Link href="/#mission" className="text-zinc-400 hover:text-white transition-colors text-sm md:text-lg font-medium">Mission</Link>
-                         <Link href="/#forge" className="text-zinc-400 hover:text-white transition-colors text-sm md:text-lg font-medium">The Forge</Link>
-                         <Link href="/#join" className="text-zinc-400 hover:text-white transition-colors text-sm md:text-lg font-medium">Sync</Link>
-                    </div>
-
-                    <div className="text-zinc-500 text-sm md:text-lg font-medium text-right">
-                         © {new Date().getFullYear()} FUBES STUDIO
-                    </div>
-                </div>
-
-                {/* Big Text Section */}
-                <div className="flex flex-col items-center justify-end flex-grow mt-20">
-                    <h1 className="text-[22vw] leading-[0.8] font-black tracking-tighter text-white text-center select-none mix-blend-difference">
-                        Fubes
-                    </h1>
-                    
-                     {/* Bottom Links Section - positioned relative to the big text or at the very bottom */}
-                     <div className="w-full flex flex-wrap justify-end gap-6 md:gap-12 mt-4 text-zinc-500 text-xs md:text-sm font-medium uppercase tracking-wider">
-                            <Link href="#" className="hover:text-white transition-colors">LinkedIn</Link>
-                            <Link href="#" className="hover:text-white transition-colors">Instagram</Link>
-                            <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
-                            <Link href="#" className="hover:text-white transition-colors">Terms & Conditions</Link>
-                     </div>
-                </div>
+  return (
+    <footer className="border-t border-line bg-paper px-5 pt-20 pb-8 md:px-8">
+      <div className="mx-auto max-w-7xl">
+        <div className="grid gap-12 md:grid-cols-12">
+          <div className="md:col-span-6">
+            <div className="flex items-baseline gap-1.5">
+              <span className="font-display text-3xl tracking-tight text-ink">Fubbes</span>
+              <span className="h-1.5 w-1.5 rounded-full bg-coral" />
             </div>
-        </footer>
-    );
+            <p className="mt-4 max-w-sm text-ink-soft">
+              A small studio building websites and mobile apps for ambitious brands.
+            </p>
+            <a
+              href={`mailto:${CONTACT_EMAIL}`}
+              className="mt-6 inline-block font-display text-2xl tracking-tight text-ink underline decoration-line underline-offset-4 transition-colors hover:decoration-ink md:text-3xl"
+            >
+              {CONTACT_EMAIL}
+            </a>
+          </div>
+
+          <div className="md:col-span-3">
+            <span className="eyebrow">Menu</span>
+            <ul className="mt-5 space-y-2.5">
+              {nav.map((n) => (
+                <li key={n.href}>
+                  <Link href={n.href} className="text-ink-soft transition-colors hover:text-ink">
+                    {n.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="md:col-span-3">
+            <span className="eyebrow">Elsewhere</span>
+            <ul className="mt-5 space-y-2.5">
+              {socials.map((s) => (
+                <li key={s.label}>
+                  <a
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-ink-soft transition-colors hover:text-ink"
+                  >
+                    {s.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* Oversized wordmark */}
+        <div className="mt-20 overflow-hidden">
+          <h2 className="select-none font-display text-[24vw] leading-[0.8] tracking-tight text-ink/[0.08]">
+            Fubbes
+          </h2>
+        </div>
+
+        <div className="mt-8 flex flex-col items-start justify-between gap-3 border-t border-line pt-6 text-sm text-ink-soft md:flex-row md:items-center">
+          <span>© {new Date().getFullYear()} Fubbes. All rights reserved.</span>
+          <span className="font-display italic">Thirukkumaran & Anbu Arasu</span>
+        </div>
+      </div>
+    </footer>
+  );
 }

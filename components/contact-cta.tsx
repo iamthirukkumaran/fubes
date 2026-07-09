@@ -1,74 +1,68 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import Link from "next/link";
-import { useRef } from "react";
+
+/* ── Real contact details — used across the whole site ── */
+export const CONTACT_EMAIL = "fubes.fubbes@gmail.com";
+export const WHATSAPP_DISPLAY = "+91 99440 33696";
+export const WHATSAPP_LINK =
+  "https://wa.me/919944033696?text=Hi%20Fubbes!%20I%27ve%20got%20a%20project%20in%20mind.";
+export const LINKEDIN_URL =
+  "https://www.linkedin.com/in/thirukkumaran-r-5752b71b4/";
+
+const ease = [0.16, 1, 0.3, 1] as const;
 
 export function ContactCTA() {
-    const ref = useRef<HTMLDivElement>(null);
-    const { scrollYProgress } = useScroll({
-        target: ref,
-        offset: ["start end", "end start"]
-    });
+  return (
+    <section id="contact" className="relative overflow-hidden border-t border-line px-5 py-28 md:px-8 md:py-40">
+      {/* playful floating blobs */}
+      <div className="pointer-events-none absolute -left-16 top-20 h-40 w-40 rounded-full bg-lime/20 blur-2xl" />
+      <div className="pointer-events-none absolute -right-10 bottom-16 h-52 w-52 rounded-full bg-blue/20 blur-3xl" />
 
-    const textY = useTransform(scrollYProgress, [0, 1], [100, -100]);
+      <div className="mx-auto max-w-7xl">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.9, ease }}
+        >
+          <span className="sticker wiggle">👋 say hi, we don&apos;t bite</span>
+          <h2 className="mt-6 max-w-4xl font-display text-5xl leading-[0.98] tracking-tight text-ink md:text-8xl">
+            Got an idea? <br />
+            <span className="display-italic">Let&apos;s make it </span>
+            <span className="hl hl-coral">real.</span>
+          </h2>
+          <p className="mt-8 max-w-md text-lg text-ink-soft">
+            Tell us what you&apos;re building. We reply within a day. No sales robots.
+          </p>
 
-    return (
-        <section ref={ref} id="join" className="relative py-40 bg-[#050505] overflow-hidden">
-            <div className="mx-auto max-w-7xl px-6 relative z-10">
-                <div className="flex flex-col items-center text-center">
-                    <motion.div
-                        style={{ y: textY }}
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-                        className="z-10 max-w-4xl"
-                    >
-                        <h2 className="text-7xl font-black md:text-[12rem] lg:text-[15rem] tracking-[-0.05em] leading-[0.8] text-white">
-                            JOIN THE <br />
-                            <span className="italic text-zinc-900">SYNC</span>
-                        </h2>
-                        <motion.p
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            transition={{ delay: 0.5 }}
-                            className="mt-16 text-xl font-light leading-relaxed text-zinc-500 md:text-3xl max-w-2xl mx-auto"
-                        >
-                            We&apos;re building the future of digital tools. Join our community of builders and get early access to our experimental forge.
-                        </motion.p>
-                        <div className="mt-20 flex flex-col items-center gap-12">
-                            <Link
-                                href="/join"
-                                className="group relative inline-flex h-24 items-center justify-center rounded-full bg-white px-24 text-[13px] font-black uppercase tracking-[0.3em] text-black transition-all hover:scale-105"
-                            >
-                                <span className="relative z-10 transition-transform group-hover:-translate-y-1">Sync Now</span>
-                                <motion.div
-                                    className="absolute inset-0 bg-zinc-200"
-                                    initial={{ scale: 0 }}
-                                    whileHover={{ scale: 1 }}
-                                    transition={{ duration: 0.4 }}
-                                />
-                            </Link>
-
-                            <div className="flex gap-12 text-sm font-medium tracking-widest uppercase text-zinc-800">
-                                <a href="mailto:hello@fubes.com" className="hover:text-white transition-colors">
-                                    hello@fubes.com
-                                </a>
-                                <span className="text-zinc-900">•</span>
-                                <a href="#" className="hover:text-white transition-colors">
-                                    X / Twitter
-                                </a>
-                            </div>
-                        </div>
-                    </motion.div>
-                </div>
-            </div>
-
-            {/* Background Decorative Text */}
-            <div className="absolute top-1/2 left-1/2 -track-tighter -translate-x-1/2 -translate-y-1/2 text-[45rem] font-black text-white/[0.01] pointer-events-none select-none uppercase">
-                Sync
-            </div>
-        </section>
-    );
+          <div className="mt-12 flex flex-wrap items-center gap-4">
+            <Link
+              href="/contact"
+              className="rounded-full bg-ink px-8 py-4 text-sm text-paper transition-transform hover:-translate-y-0.5"
+            >
+              Start a project
+            </Link>
+            <a
+              href={WHATSAPP_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full border-2 border-lime bg-lime/10 px-8 py-4 text-sm font-medium text-ink transition-transform hover:-translate-y-0.5"
+            >
+              WhatsApp us 💬
+            </a>
+            <a
+              href={`mailto:${CONTACT_EMAIL}`}
+              className="group inline-flex items-center gap-2 text-sm text-ink"
+            >
+              <span className="border-b-2 border-ink/20 pb-0.5 transition-colors group-hover:border-ink">
+                {CONTACT_EMAIL}
+              </span>
+            </a>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
 }

@@ -1,43 +1,41 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Poppins, Montserrat, Inter } from "next/font/google";
+import { Bricolage_Grotesque, Inter, Caveat } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// Characterful modern grotesque for display headings — bold, award-worthy.
+const bricolage = Bricolage_Grotesque({
+  variable: "--font-display",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const poppins = Poppins({
-  variable: "--font-poppins",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
-
-const montserrat = Montserrat({
-  variable: "--font-montserrat",
-  subsets: ["latin"],
-  weight: ["700", "800", "900"],
-});
-
+// Clean grotesque for UI, labels and body copy.
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  display: "swap",
+});
+
+// Handwritten font for playful accents, stickers and scribbles.
+const caveat = Caveat({
+  variable: "--font-caveat",
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "FUBES | Creative Product Studio",
-  description: "Building a new generation of digital tools and experiences. Fast, focused, and unapologetically creative software that people actually love using.",
+  title: "Fubbes — Web & App Studio",
+  description:
+    "Fubbes is a small studio building websites and mobile apps for ambitious brands. Full-stack web, Flutter apps, product design and backend engineering.",
 };
 
 import { Preloader } from "@/components/preloader";
 import { SmoothScroller } from "@/components/smooth-scroller";
 import PageTransition from "@/components/page-transition";
-import "@/lib/add-lenis-styles.css"; // Ensure this exists or add styles directly
+import ClickSpark from "@/components/reactbits/click-spark";
 
 export default function RootLayout({
   children,
@@ -47,9 +45,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} ${montserrat.variable} ${inter.variable} antialiased bg-black`}
+        className={`${bricolage.variable} ${inter.variable} ${caveat.variable} antialiased bg-paper text-ink`}
       >
         <Preloader />
+        <ClickSpark sparkColor="#0d0d0d" sparkCount={10} sparkRadius={22} duration={520} />
         <SmoothScroller>
           <PageTransition>{children}</PageTransition>
         </SmoothScroller>

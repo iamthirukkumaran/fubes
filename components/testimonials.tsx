@@ -2,99 +2,89 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowLeft, ArrowRight, Quote } from "lucide-react";
 
-const testimonials = [
-    {
-        id: 1,
-        quote: "Fubes didn't just redesign our site; they reimagined our entire digital existence. The level of detail is terrifyingly good.",
-        author: "Elena Sovora",
-        role: "CMO at Continuum",
-        image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200&auto=format&fit=crop"
-    },
-    {
-        id: 2,
-        quote: "We needed a partner who understood luxury in the digital age. Fubes delivered a masterpiece that elevated our brand valuation.",
-        author: "Marcus Chen",
-        role: "Founder of Onyx",
-        image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200&auto=format&fit=crop"
-    },
-    {
-        id: 3,
-        quote: "Absolute precision. The kinetic typography and smooth interactions have doubled our session duration. Truly world-class.",
-        author: "Sarah Jenkins",
-        role: "Director at Aura",
-        image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=200&auto=format&fit=crop"
-    }
+const faqs = [
+  {
+    q: "Are you two actually any good?",
+    a: "Send us your idea — we'll show you exactly how we'd build it. If we're not the right fit, we'll say so.",
+  },
+  {
+    q: "How much does it cost?",
+    a: "Fixed price, quoted up front after a quick call. Tell us your budget and we'll be straight with you.",
+  },
+  {
+    q: "How long does it take?",
+    a: "A site: a couple of weeks. Apps: longer. Either way, you get a timeline before we start.",
+  },
+  {
+    q: "Website and app together?",
+    a: "Yes — that's the whole point of a duo. One team, shared backend, consistent design.",
+  },
+  {
+    q: "Who owns everything?",
+    a: "You do. Code, hosting, domains, app-store accounts — all in your name. No lock-in.",
+  },
 ];
 
 export function Testimonials() {
-    const [current, setCurrent] = useState(0);
+  const [open, setOpen] = useState<number | null>(0);
 
-    const next = () => setCurrent((prev) => (prev + 1) % testimonials.length);
-    const prev = () => setCurrent((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  return (
+    <section className="border-t border-line px-5 py-24 md:px-8 md:py-36">
+      <div className="mx-auto max-w-7xl">
+        <div className="grid gap-12 md:grid-cols-12 md:gap-16">
+          <div className="md:col-span-4">
+            <span className="eyebrow">Good to know</span>
+            <h2 className="mt-4 font-display text-4xl leading-[1.05] tracking-tight text-ink md:text-5xl">
+              Questions, <span className="hl hl-lime">answered</span>
+            </h2>
+            <p className="mt-3 handwritten text-2xl text-violet">ask us anything, really</p>
+          </div>
 
-    return (
-        <section className="relative py-40 bg-[#050505] overflow-hidden border-t border-white/5">
-            <div className="mx-auto max-w-7xl px-6">
-                <div className="mb-20">
-                    <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-zinc-800">
-                        Validation
-                    </span>
-                    <h2 className="mt-4 text-4xl md:text-7xl font-black text-white tracking-tighter">
-                        USER FEEDBACK
-                    </h2>
-                </div>
-
-                <div className="relative">
-                    <AnimatePresence mode="wait">
+          <div className="md:col-span-8">
+            <div className="border-t border-line">
+              {faqs.map((f, i) => {
+                const isOpen = open === i;
+                return (
+                  <div key={i} className="border-b border-line">
+                    <button
+                      onClick={() => setOpen(isOpen ? null : i)}
+                      className="flex w-full items-center justify-between gap-6 py-6 text-left"
+                    >
+                      <span className="font-display text-xl tracking-tight text-ink md:text-2xl">
+                        {f.q}
+                      </span>
+                      <span
+                        className={`grid h-8 w-8 flex-shrink-0 place-items-center rounded-full border border-line transition-transform duration-300 ${
+                          isOpen ? "rotate-45" : ""
+                        }`}
+                      >
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                          <line x1="12" y1="5" x2="12" y2="19" />
+                          <line x1="5" y1="12" x2="19" y2="12" />
+                        </svg>
+                      </span>
+                    </button>
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
                         <motion.div
-                            key={current}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -20 }}
-                            transition={{ duration: 0.5 }}
-                            className="flex flex-col md:flex-row gap-12 md:items-center"
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                          className="overflow-hidden"
                         >
-                            <div className="relative md:w-2/3">
-                                <Quote className="absolute -top-8 -left-8 w-24 h-24 text-white/[0.03]" />
-                                <p className="text-3xl md:text-5xl font-light leading-tight text-white tracking-tight">
-                                    &ldquo;{testimonials[current].quote}&rdquo;
-                                </p>
-                            </div>
-
-                            <div className="md:w-1/3 flex flex-col gap-6 border-l border-white/10 pl-8">
-                                <div className="h-20 w-20 rounded-full overflow-hidden bg-zinc-900 border border-white/10">
-                                    <img
-                                        src={testimonials[current].image}
-                                        alt={testimonials[current].author}
-                                        className="h-full w-full object-cover grayscale"
-                                    />
-                                </div>
-                                <div>
-                                    <h4 className="text-2xl font-black text-white">{testimonials[current].author}</h4>
-                                    <p className="text-sm font-bold text-zinc-500 uppercase tracking-[0.2em]">{testimonials[current].role}</p>
-                                </div>
-                            </div>
+                          <p className="max-w-2xl pb-7 text-ink-soft md:text-lg">{f.a}</p>
                         </motion.div>
+                      )}
                     </AnimatePresence>
-
-                    <div className="mt-16 flex gap-4">
-                        <button
-                            onClick={prev}
-                            className="h-14 w-14 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all group"
-                        >
-                            <ArrowLeft className="w-6 h-6" />
-                        </button>
-                        <button
-                            onClick={next}
-                            className="h-14 w-14 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all group"
-                        >
-                            <ArrowRight className="w-6 h-6" />
-                        </button>
-                    </div>
-                </div>
+                  </div>
+                );
+              })}
             </div>
-        </section>
-    );
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }

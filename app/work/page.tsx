@@ -3,30 +3,47 @@
 import { motion } from "framer-motion";
 import { Navbar } from "@/components/navbar";
 import { Work } from "@/components/work";
+import { ContactCTA } from "@/components/contact-cta";
 import { Footer } from "@/components/footer";
 
 export default function WorkPage() {
-    return (
-        <div className="relative min-h-screen bg-black">
-            <Navbar />
-            <main className="pt-20">
-                <section className="px-6 py-40 bg-black">
-                    <div className="mx-auto max-w-7xl">
-                        <motion.h1
-                            initial={{ x: -100, opacity: 0 }}
-                            animate={{ x: 0, opacity: 1 }}
-                            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                            className="text-[15vw] font-black md:text-[12rem] lg:text-[16rem] tracking-[-0.05em] leading-[0.8] text-white"
-                        >
-                            SELECTED <br />
-                            <span className="italic text-zinc-900" style={{ WebkitTextStroke: "1px #333" }}>ARCHIVE</span>
-                        </motion.h1>
-                    </div>
-                </section>
+  return (
+    <div className="relative min-h-screen bg-paper">
+      <Navbar />
+      <main>
+        <section className="px-5 pt-40 pb-8 md:px-8 md:pt-52 md:pb-12">
+          <div className="mx-auto max-w-7xl">
+            <motion.span
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="eyebrow"
+            >
+              Selected work
+            </motion.span>
+            <motion.h1
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+              className="mt-5 max-w-4xl font-display text-5xl leading-[0.98] tracking-tight text-ink md:text-8xl"
+            >
+              Things we've <span className="display-italic text-ink-soft">built.</span>
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="mt-8 max-w-xl text-lg text-ink-soft"
+            >
+              Websites &amp; apps. New work lands here as we ship it.
+            </motion.p>
+          </div>
+        </section>
 
-                <Work />
-            </main>
-            <Footer />
-        </div>
-    );
+        <Work />
+        <ContactCTA />
+      </main>
+      <Footer />
+    </div>
+  );
 }
