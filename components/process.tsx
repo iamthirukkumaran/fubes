@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { SectionHeading } from "./section-heading";
 
 const steps = [
   {
@@ -39,12 +40,16 @@ export function Process() {
   return (
     <section className="border-t border-line bg-paper-2 px-5 py-24 md:px-8 md:py-36">
       <div className="mx-auto max-w-7xl">
-        <div className="mb-16 md:mb-20">
-          <span className="eyebrow">How we work</span>
-          <h2 className="mt-4 max-w-2xl font-display text-4xl leading-[1.05] tracking-tight text-ink md:text-6xl">
-            A simple, honest process <span className="hl hl-yellow">(no jargon).</span>
-          </h2>
-        </div>
+        <SectionHeading
+          index="04"
+          eyebrow="How we work"
+          title={
+            <>
+              A simple, honest process <span className="hl hl-yellow">(no jargon).</span>
+            </>
+          }
+          className="mb-16 md:mb-20"
+        />
 
         <div className="grid grid-cols-1 gap-x-12 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((s, i) => (

@@ -33,9 +33,14 @@ export function Testimonials() {
     <section className="border-t border-line px-5 py-24 md:px-8 md:py-36">
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-12 md:grid-cols-12 md:gap-16">
-          <div className="md:col-span-4">
-            <span className="eyebrow">Good to know</span>
-            <h2 className="mt-4 font-display text-4xl leading-[1.05] tracking-tight text-ink md:text-5xl">
+          <div className="md:col-span-4 md:sticky md:top-28 md:self-start">
+            <div className="flex items-center gap-3">
+              <span className="grid h-6 w-6 flex-shrink-0 place-items-center rounded-full border border-line text-[10px] font-medium tabular-nums text-ink-soft">
+                06
+              </span>
+              <span className="eyebrow">Good to know</span>
+            </div>
+            <h2 className="mt-5 font-display text-4xl font-bold leading-[1.02] tracking-[-0.03em] text-ink md:text-5xl">
               Questions, <span className="hl hl-lime">answered</span>
             </h2>
             <p className="mt-3 handwritten text-2xl text-violet">ask us anything, really</p>

@@ -9,16 +9,26 @@ import { CONTACT_EMAIL, WHATSAPP_DISPLAY, WHATSAPP_LINK, LINKEDIN_URL } from "@/
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
+const PROJECT_TYPES = ["Website", "Mobile app", "Design", "Backend"];
+const BUDGETS = ["Under ₹50k", "₹50k–2L", "₹2L–5L", "5L+", "Not sure yet"];
+
 export default function ContactPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [types, setTypes] = useState<string[]>([]);
+  const [budget, setBudget] = useState("");
+
+  const toggleType = (t: string) =>
+    setTypes((prev) => (prev.includes(t) ? prev.filter((x) => x !== t) : [...prev, t]));
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const subject = encodeURIComponent(`New project enquiry from ${name || "someone"}`);
     const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\n\n${message}`
+      `Name: ${name}\nEmail: ${email}\n` +
+        `Looking for: ${types.length ? types.join(", ") : "Not specified"}\n` +
+        `Budget: ${budget || "Not specified"}\n\n${message}`
     );
     window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
   };
@@ -123,8 +133,10 @@ export default function ContactPage() {
               className="space-y-8 rounded-3xl border border-line bg-paper-2 p-7 md:col-span-8 md:p-12"
             >
               <div>
-                <label className="eyebrow">Your name</label>
+                <label htmlFor="name" className="eyebrow">Your name</label>
                 <input
+                  id="name"
+                  name="name"
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
@@ -133,8 +145,10 @@ export default function ContactPage() {
                 />
               </div>
               <div>
-                <label className="eyebrow">Your email</label>
+                <label htmlFor="email" className="eyebrow">Your email</label>
                 <input
+                  id="email"
+                  name="email"
                   required
                   type="email"
                   value={email}
@@ -143,9 +157,57 @@ export default function ContactPage() {
                   className="mt-3 w-full border-b border-line bg-transparent py-3 font-display text-2xl text-ink placeholder:text-ink/25 focus:border-ink focus:outline-none"
                 />
               </div>
+
               <div>
-                <label className="eyebrow">About the project</label>
+                <span className="eyebrow">What do you need?</span>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {PROJECT_TYPES.map((t) => {
+                    const on = types.includes(t);
+                    return (
+                      <button
+                        key={t}
+                        type="button"
+                        onClick={() => toggleType(t)}
+                        aria-pressed={on}
+                        className={`rounded-full border-2 px-4 py-1.5 text-sm transition-colors ${
+                          on
+                            ? "border-ink bg-ink text-paper"
+                            : "border-line text-ink-soft hover:border-ink hover:text-ink"
+                        }`}
+                      >
+                        {t}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div>
+                <span className="eyebrow">Rough budget</span>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {BUDGETS.map((b) => (
+                    <button
+                      key={b}
+                      type="button"
+                      onClick={() => setBudget(b === budget ? "" : b)}
+                      aria-pressed={b === budget}
+                      className={`rounded-full border-2 px-4 py-1.5 text-sm transition-colors ${
+                        b === budget
+                          ? "border-blue bg-blue text-paper"
+                          : "border-line text-ink-soft hover:border-ink hover:text-ink"
+                      }`}
+                    >
+                      {b}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <label htmlFor="message" className="eyebrow">About the project</label>
                 <textarea
+                  id="message"
+                  name="message"
                   required
                   rows={4}
                   value={message}

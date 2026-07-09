@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { ArrowUp } from "lucide-react";
 import { CONTACT_EMAIL, WHATSAPP_LINK, LINKEDIN_URL } from "./contact-cta";
 
 const nav = [
@@ -76,9 +77,18 @@ export function Footer() {
           </h2>
         </div>
 
-        <div className="mt-8 flex flex-col items-start justify-between gap-3 border-t border-line pt-6 text-sm text-ink-soft md:flex-row md:items-center">
+        <div className="mt-8 flex flex-col items-start justify-between gap-4 border-t border-line pt-6 text-sm text-ink-soft md:flex-row md:items-center">
           <span>© {new Date().getFullYear()} Fubbes. All rights reserved.</span>
-          <span className="font-display italic">Thirukkumaran & Anbu Arasu</span>
+          <span className="font-display italic">Thirukkumaran &amp; Anbu Arasu</span>
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="group inline-flex items-center gap-1.5 transition-colors hover:text-ink"
+          >
+            Back to top
+            <span className="grid h-6 w-6 place-items-center rounded-full border border-line transition-colors group-hover:border-ink">
+              <ArrowUp className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5" />
+            </span>
+          </button>
         </div>
       </div>
     </footer>

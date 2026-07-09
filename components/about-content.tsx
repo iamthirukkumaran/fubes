@@ -16,7 +16,12 @@ export function AboutContent() {
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-14 md:grid-cols-12 md:gap-16">
           <div className="md:col-span-4">
-            <span className="eyebrow">The studio</span>
+            <div className="flex items-center gap-3">
+              <span className="grid h-6 w-6 flex-shrink-0 place-items-center rounded-full border border-line text-[10px] font-medium tabular-nums text-ink-soft">
+                03
+              </span>
+              <span className="eyebrow">The studio</span>
+            </div>
           </div>
 
           <div className="md:col-span-8">

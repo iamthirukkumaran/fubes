@@ -27,9 +27,40 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
-  title: "Fubbes · Web & App Studio",
+  // Update this to your real domain when you deploy.
+  metadataBase: new URL("https://fubbes.com"),
+  title: {
+    default: "Fubbes · Web & App Studio",
+    template: "%s · Fubbes",
+  },
   description:
     "Fubbes is a small studio building websites and mobile apps for ambitious brands. Full-stack web, Flutter apps, product design and backend engineering.",
+  keywords: [
+    "web development",
+    "app development",
+    "Flutter",
+    "Next.js",
+    "UI UX design",
+    "web studio",
+    "India",
+  ],
+  openGraph: {
+    title: "Fubbes · Web & App Studio",
+    description:
+      "Two developers building websites and mobile apps people actually love. Web, mobile, design and backend, start to finish.",
+    type: "website",
+    siteName: "Fubbes",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Fubbes · Web & App Studio",
+    description:
+      "Two developers building websites and mobile apps people actually love.",
+  },
+};
+
+export const viewport = {
+  themeColor: "#ffffff",
 };
 
 import { Preloader } from "@/components/preloader";

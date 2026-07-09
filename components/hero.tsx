@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Ban, KeyRound, Coffee, ArrowRight } from "lucide-react";
+import { Ban, KeyRound, Coffee, ArrowRight, ChevronDown } from "lucide-react";
 import StarBorder from "./reactbits/star-border";
 import GradientText from "./reactbits/gradient-text";
 import Magnet from "./reactbits/magnet";
@@ -102,6 +102,24 @@ export function Hero() {
               {chip.t}
             </span>
           ))}
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 1 }}
+          className="mt-16 flex items-center justify-between border-t border-line pt-6 text-sm text-ink-soft"
+        >
+          <span>Based in India, working worldwide</span>
+          <span className="hidden items-center gap-2 md:inline-flex">
+            Scroll
+            <motion.span
+              animate={{ y: [0, 5, 0] }}
+              transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <ChevronDown className="h-4 w-4" />
+            </motion.span>
+          </span>
         </motion.div>
       </div>
     </section>

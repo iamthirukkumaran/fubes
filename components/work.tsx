@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { Clock, Eye, ArrowRight } from "lucide-react";
 import SpotlightCard from "./reactbits/spotlight-card";
+import { SectionHeading } from "./section-heading";
 
 /**
  * PLACEHOLDER PROJECTS — swap these for real work.
@@ -33,7 +34,7 @@ const ease = [0.16, 1, 0.3, 1] as const;
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   const inner = (
-    <div className="relative">
+    <div className="relative transition-transform duration-300 hover:-translate-y-1.5">
       <SpotlightCard
         spotlightColor={project.spot}
         className={`aspect-[4/3] w-full rounded-2xl border-2 border-ink ${project.tint}`}
@@ -89,10 +90,7 @@ export function Work() {
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div>
-            <span className="eyebrow">Selected work</span>
-            <h2 className="mt-4 max-w-2xl font-display text-4xl leading-[1.05] tracking-tight text-ink md:text-6xl">
-              Recent projects
-            </h2>
+            <SectionHeading index="02" eyebrow="Selected work" title="Recent projects" />
             <p className="mt-3 inline-flex items-center gap-2 handwritten text-2xl text-coral">
               <Eye className="h-5 w-5" strokeWidth={2} />
               your project could live here

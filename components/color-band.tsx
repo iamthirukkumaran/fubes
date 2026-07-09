@@ -12,16 +12,21 @@ export function ColorBand() {
       <div className="pointer-events-none absolute -bottom-16 left-10 h-56 w-56 rounded-full bg-violet/40 blur-3xl" />
 
       <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-10 md:flex-row md:items-end">
-        <motion.h2
+        <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="max-w-3xl font-display text-5xl font-extrabold leading-[0.95] tracking-[-0.03em] md:text-8xl"
+          className="max-w-3xl"
         >
-          Less talk. <br />
-          <span className="text-yellow">More shipping.</span>
-        </motion.h2>
+          <span className="text-[11px] font-medium uppercase tracking-[0.28em] text-paper/60">
+            The Fubbes way
+          </span>
+          <h2 className="mt-5 font-display text-5xl font-extrabold leading-[0.95] tracking-[-0.03em] md:text-8xl">
+            Less talk. <br />
+            <span className="text-yellow">More shipping.</span>
+          </h2>
+        </motion.div>
 
         <Link
           href="/contact"

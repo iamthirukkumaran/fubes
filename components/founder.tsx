@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { Coffee, Ruler, type LucideIcon } from "lucide-react";
 import { LINKEDIN_URL } from "./contact-cta";
+import { SectionHeading } from "./section-heading";
 
 /**
  * The team. To add a real photo: drop the file in /public and set `photo`
@@ -52,13 +53,17 @@ export function Team() {
   return (
     <section id="team" className="border-t border-line px-5 py-24 md:px-8 md:py-36">
       <div className="mx-auto max-w-7xl">
-        <div className="mb-16 md:mb-20">
-          <span className="eyebrow">The people</span>
-          <h2 className="mt-4 max-w-3xl font-display text-4xl leading-[1.05] tracking-tight text-ink md:text-6xl">
-            You&apos;ll work directly with <span className="hl hl-coral">us two.</span>
-          </h2>
-          <p className="mt-3 handwritten text-2xl text-blue">no middlemen, no mystery team</p>
-        </div>
+        <SectionHeading
+          index="05"
+          eyebrow="The people"
+          title={
+            <>
+              You&apos;ll work directly with <span className="hl hl-coral">us two.</span>
+            </>
+          }
+          note="no middlemen, no mystery team"
+          className="mb-16 md:mb-20"
+        />
 
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-16">
           {team.map((m, i) => (
@@ -68,6 +73,7 @@ export function Team() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.7, delay: i * 0.1, ease }}
+              className="transition-transform duration-300 hover:-translate-y-1.5"
             >
               <div className={`group relative aspect-[4/5] w-full overflow-hidden rounded-2xl border-2 border-ink ${m.tint}`}>
                 {m.photo ? (

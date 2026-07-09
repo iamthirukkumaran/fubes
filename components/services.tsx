@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { SectionHeading } from "./section-heading";
 
 const services = [
   {
@@ -44,13 +45,16 @@ export function Services() {
     <section id="services" className="px-5 py-24 md:px-8 md:py-36">
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 flex flex-col justify-between gap-6 md:mb-24 md:flex-row md:items-end">
-          <div>
-            <span className="eyebrow">What we do</span>
-            <h2 className="mt-4 max-w-2xl font-display text-4xl leading-[1.05] tracking-tight text-ink md:text-6xl">
-              Everything your product needs, <span className="hl hl-violet">under one roof.</span>
-            </h2>
-          </div>
-          <p className="max-w-xs text-ink-soft">Two people, four disciplines, one team.</p>
+          <SectionHeading
+            index="01"
+            eyebrow="What we do"
+            title={
+              <>
+                Everything your product needs, <span className="hl hl-violet">under one roof.</span>
+              </>
+            }
+          />
+          <p className="max-w-xs text-ink-soft md:pb-2">Two people, four disciplines, one team.</p>
         </div>
 
         <div className="rule">
@@ -64,8 +68,8 @@ export function Services() {
               className="group grid grid-cols-1 gap-6 border-b border-line py-10 md:grid-cols-12 md:gap-8 md:py-14"
             >
               <div className="flex items-start gap-5 md:col-span-4">
-                <span className={`mt-3 h-2.5 w-2.5 flex-shrink-0 rounded-full ${s.dot}`} />
-                <h3 className="font-display text-3xl font-bold tracking-tight text-ink md:text-5xl">
+                <span className={`mt-3 h-2.5 w-2.5 flex-shrink-0 rounded-full transition-transform duration-300 group-hover:scale-150 ${s.dot}`} />
+                <h3 className="font-display text-3xl font-bold tracking-tight text-ink transition-transform duration-300 group-hover:translate-x-2 md:text-5xl">
                   {s.title}
                 </h3>
               </div>
