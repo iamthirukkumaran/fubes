@@ -1,6 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
+import { Coffee, Ruler, type LucideIcon } from "lucide-react";
 import { LINKEDIN_URL } from "./contact-cta";
 
 /**
@@ -12,9 +14,10 @@ const team = [
     name: "Thirukkumaran",
     role: "Full-stack & Backend Developer",
     initials: "TK",
-    photo: "",
-    bio: "Builds the web side end to end — interfaces, APIs, databases, deployment.",
-    funFact: "Debugs faster with chai ☕",
+    photo: "/thiru.png",
+    bio: "Builds the web side end to end. Interfaces, APIs, databases, deployment.",
+    funFact: "Debugs faster with chai",
+    FunIcon: Coffee as LucideIcon,
     skills: ["Next.js", "React", "Node", "Postgres", "TypeScript"],
     tint: "bg-blue/10",
     initialsColor: "text-blue",
@@ -29,8 +32,9 @@ const team = [
     role: "Mobile App Developer",
     initials: "AA",
     photo: "",
-    bio: "Ships cross-platform apps in Flutter — one codebase, native feel on iOS and Android.",
-    funFact: "Ships pixel-perfect or not at all ✨",
+    bio: "Ships cross-platform apps in Flutter. One codebase, native feel on iOS and Android.",
+    funFact: "Pixel-perfect, always",
+    FunIcon: Ruler as LucideIcon,
     skills: ["Flutter", "Dart", "iOS", "Android", "Firebase"],
     tint: "bg-coral/10",
     initialsColor: "text-coral",
@@ -65,18 +69,24 @@ export function Team() {
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.7, delay: i * 0.1, ease }}
             >
-              <div className={`relative aspect-[4/3] w-full overflow-hidden rounded-2xl border-2 border-ink ${m.tint}`}>
+              <div className={`group relative aspect-[4/5] w-full overflow-hidden rounded-2xl border-2 border-ink ${m.tint}`}>
                 {m.photo ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img src={m.photo} alt={m.name} className="h-full w-full object-cover" />
+                  <Image
+                    src={m.photo}
+                    alt={m.name}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover object-top grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-[1.03]"
+                  />
                 ) : (
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <span className={`font-display text-7xl font-semibold ${m.initialsColor} opacity-40 md:text-8xl`}>
+                    <span className={`font-display text-8xl font-bold ${m.initialsColor} opacity-40 transition-transform duration-500 group-hover:scale-110 md:text-9xl`}>
                       {m.initials}
                     </span>
                   </div>
                 )}
-                <span className="sticker absolute bottom-4 left-4 !text-base">
+                <span className="sticker absolute bottom-4 left-4 z-20 !text-base">
+                  <m.FunIcon className="h-4 w-4" strokeWidth={2} />
                   {m.funFact}
                 </span>
               </div>

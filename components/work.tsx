@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { Clock, Eye, ArrowRight } from "lucide-react";
+import SpotlightCard from "./reactbits/spotlight-card";
 
 /**
  * PLACEHOLDER PROJECTS — swap these for real work.
@@ -16,22 +18,26 @@ export type Project = {
   href?: string;
   image?: string;
   tint: string;
+  spot: string;
   placeholder?: boolean;
 };
 
 const projects: Project[] = [
-  { title: "Your project here", type: "Web · E-commerce", year: "2026", tint: "bg-blue/10 text-blue", placeholder: true },
-  { title: "Your project here", type: "Mobile · Flutter app", year: "2026", tint: "bg-coral/10 text-coral", placeholder: true },
-  { title: "Your project here", type: "Web app · Dashboard", year: "2026", tint: "bg-violet/10 text-violet", placeholder: true },
-  { title: "Your project here", type: "Design · Brand & UI", year: "2026", tint: "bg-lime/10 text-[color:var(--color-lime)]", placeholder: true },
+  { title: "Your project here", type: "Web · E-commerce", year: "2026", tint: "bg-blue/10 text-blue", spot: "rgba(47,107,255,0.20)", placeholder: true },
+  { title: "Your project here", type: "Mobile · Flutter app", year: "2026", tint: "bg-coral/10 text-coral", spot: "rgba(242,73,42,0.18)", placeholder: true },
+  { title: "Your project here", type: "Web app · Dashboard", year: "2026", tint: "bg-violet/10 text-violet", spot: "rgba(124,77,255,0.20)", placeholder: true },
+  { title: "Your project here", type: "Design · Brand & UI", year: "2026", tint: "bg-lime/10 text-[color:var(--color-lime)]", spot: "rgba(22,163,74,0.18)", placeholder: true },
 ];
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   const inner = (
-    <div className="group relative">
-      <div className={`relative aspect-[4/3] w-full overflow-hidden rounded-2xl border-2 border-ink ${project.tint}`}>
+    <div className="relative">
+      <SpotlightCard
+        spotlightColor={project.spot}
+        className={`aspect-[4/3] w-full rounded-2xl border-2 border-ink ${project.tint}`}
+      >
         {project.image ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -41,15 +47,16 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           />
         ) : (
           <div className="absolute inset-0 flex items-center justify-center">
-            <span className="font-display text-[22vw] font-semibold leading-none opacity-40 md:text-[10rem]">
+            <span className="font-display text-[22vw] font-bold leading-none opacity-40 md:text-[10rem]">
               {String(index + 1).padStart(2, "0")}
             </span>
-            <span className="sticker absolute bottom-5 left-5 !text-base">
-              coming soon ✨
+            <span className="sticker absolute bottom-5 left-5 z-20 !text-base">
+              <Clock className="h-4 w-4" strokeWidth={2} />
+              coming soon
             </span>
           </div>
         )}
-      </div>
+      </SpotlightCard>
 
       <div className="mt-5 flex items-baseline justify-between gap-4">
         <div>
@@ -86,8 +93,9 @@ export function Work() {
             <h2 className="mt-4 max-w-2xl font-display text-4xl leading-[1.05] tracking-tight text-ink md:text-6xl">
               Recent projects
             </h2>
-            <p className="mt-3 handwritten text-2xl text-coral">
-              (fresh spots — your project could live here 👀)
+            <p className="mt-3 inline-flex items-center gap-2 handwritten text-2xl text-coral">
+              <Eye className="h-5 w-5" strokeWidth={2} />
+              your project could live here
             </p>
           </div>
           <Link
@@ -97,7 +105,7 @@ export function Work() {
             <span className="border-b-2 border-ink/20 pb-0.5 transition-colors group-hover:border-ink">
               View all
             </span>
-            <span className="transition-transform group-hover:translate-x-1">→</span>
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
 

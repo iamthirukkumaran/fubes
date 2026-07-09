@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { Coffee, Zap } from "lucide-react";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { CONTACT_EMAIL, WHATSAPP_DISPLAY, WHATSAPP_LINK, LINKEDIN_URL } from "@/components/contact-cta";
@@ -48,9 +49,10 @@ export default function ContactPage() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.1, ease }}
-              className="mt-6 handwritten text-2xl text-coral"
+              className="mt-6 inline-flex items-center gap-2 handwritten text-2xl text-coral"
             >
-              coffee&apos;s on us (virtually) ☕
+              <Coffee className="h-5 w-5" strokeWidth={2} />
+              coffee&apos;s on us (virtually)
             </motion.p>
           </div>
         </section>
@@ -96,14 +98,17 @@ export default function ContactPage() {
               </div>
               <div>
                 <span className="eyebrow">Response time</span>
-                <p className="mt-3 text-lg text-ink">Within one business day ⚡</p>
+                <p className="mt-3 inline-flex items-center gap-2 text-lg text-ink">
+                  <Zap className="h-4 w-4 text-blue" strokeWidth={2} />
+                  Within one business day
+                </p>
               </div>
               <div>
                 <span className="eyebrow">The team</span>
                 <p className="mt-3 text-lg text-ink">
-                  Thirukkumaran — Web & Backend
+                  Thirukkumaran · Web &amp; Backend
                   <br />
-                  Anbu Arasu — Mobile Apps
+                  Anbu Arasu · Mobile Apps
                 </p>
               </div>
             </div>

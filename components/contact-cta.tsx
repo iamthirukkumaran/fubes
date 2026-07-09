@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { Hand, MessageCircle } from "lucide-react";
 
 /* ── Real contact details — used across the whole site ── */
 export const CONTACT_EMAIL = "fubes.fubbes@gmail.com";
@@ -27,7 +28,10 @@ export function ContactCTA() {
           viewport={{ once: true }}
           transition={{ duration: 0.9, ease }}
         >
-          <span className="sticker wiggle">👋 say hi, we don&apos;t bite</span>
+          <span className="sticker wiggle">
+            <Hand className="h-4 w-4" strokeWidth={2} />
+            say hi, we don&apos;t bite
+          </span>
           <h2 className="mt-6 max-w-4xl font-display text-5xl leading-[0.98] tracking-tight text-ink md:text-8xl">
             Got an idea? <br />
             <span className="display-italic">Let&apos;s make it </span>
@@ -48,9 +52,10 @@ export function ContactCTA() {
               href={WHATSAPP_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full border-2 border-lime bg-lime/10 px-8 py-4 text-sm font-medium text-ink transition-transform hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 rounded-full border-2 border-lime bg-lime/10 px-8 py-4 text-sm font-medium text-ink transition-transform hover:-translate-y-0.5"
             >
-              WhatsApp us 💬
+              <MessageCircle className="h-4 w-4 text-[color:var(--color-lime)]" strokeWidth={2} />
+              WhatsApp us
             </a>
             <a
               href={`mailto:${CONTACT_EMAIL}`}

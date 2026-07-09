@@ -2,8 +2,10 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { Ban, KeyRound, Coffee, ArrowRight } from "lucide-react";
 import StarBorder from "./reactbits/star-border";
 import GradientText from "./reactbits/gradient-text";
+import Magnet from "./reactbits/magnet";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -60,7 +62,7 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.5, ease }}
             className="max-w-md text-lg text-ink-soft"
           >
-            Two developers. Web, mobile &amp; backend — built properly, start to finish.
+            Two developers. Web, mobile &amp; backend, built properly from start to finish.
           </motion.p>
 
           <motion.div
@@ -69,12 +71,14 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.6, ease }}
             className="flex flex-wrap items-center gap-5"
           >
-            <StarBorder href="/contact">Start a project</StarBorder>
+            <Magnet strength={0.25}>
+              <StarBorder href="/contact">Start a project</StarBorder>
+            </Magnet>
             <Link href="/work" className="group inline-flex items-center gap-2 text-sm text-ink">
               <span className="border-b-2 border-ink/20 pb-0.5 transition-colors group-hover:border-ink">
                 See our work
               </span>
-              <span className="transition-transform group-hover:translate-x-1">→</span>
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </motion.div>
         </div>
@@ -86,14 +90,15 @@ export function Hero() {
           className="mt-14 flex flex-wrap items-center gap-3"
         >
           {[
-            { t: "no templates 🤞", c: "border-coral text-coral" },
-            { t: "you own everything", c: "border-blue text-blue" },
-            { t: "powered by chai ☕", c: "border-lime text-[color:var(--color-lime)]" },
+            { t: "no templates, ever", Icon: Ban, c: "border-coral text-coral" },
+            { t: "you own everything", Icon: KeyRound, c: "border-blue text-blue" },
+            { t: "powered by chai", Icon: Coffee, c: "border-lime text-[color:var(--color-lime)]" },
           ].map((chip) => (
             <span
               key={chip.t}
-              className={`wiggle rounded-full border-2 bg-paper px-4 py-1.5 text-sm font-medium ${chip.c}`}
+              className={`wiggle inline-flex items-center gap-1.5 rounded-full border-2 bg-paper px-4 py-1.5 text-sm font-medium ${chip.c}`}
             >
+              <chip.Icon className="h-3.5 w-3.5" strokeWidth={2} />
               {chip.t}
             </span>
           ))}

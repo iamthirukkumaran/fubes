@@ -27,7 +27,7 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
-  title: "Fubbes — Web & App Studio",
+  title: "Fubbes · Web & App Studio",
   description:
     "Fubbes is a small studio building websites and mobile apps for ambitious brands. Full-stack web, Flutter apps, product design and backend engineering.",
 };

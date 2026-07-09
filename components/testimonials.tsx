@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const faqs = [
   {
     q: "Are you two actually any good?",
-    a: "Send us your idea — we'll show you exactly how we'd build it. If we're not the right fit, we'll say so.",
+    a: "Send us your idea and we'll show you exactly how we'd build it. If we're not the right fit, we'll say so.",
   },
   {
     q: "How much does it cost?",
@@ -18,11 +18,11 @@ const faqs = [
   },
   {
     q: "Website and app together?",
-    a: "Yes — that's the whole point of a duo. One team, shared backend, consistent design.",
+    a: "Yes, that's the whole point of a duo. One team, shared backend, consistent design.",
   },
   {
     q: "Who owns everything?",
-    a: "You do. Code, hosting, domains, app-store accounts — all in your name. No lock-in.",
+    a: "You do. Code, hosting, domains and app-store accounts, all in your name. No lock-in.",
   },
 ];
 

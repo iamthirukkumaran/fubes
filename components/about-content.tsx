@@ -25,10 +25,10 @@ export function AboutContent() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease }}
-              className="font-display text-3xl font-semibold leading-[1.12] tracking-tight text-ink md:text-6xl"
+              className="font-display text-3xl font-bold leading-[1.12] tracking-tight text-ink md:text-6xl"
             >
               Two developers. <span className="hl hl-blue">Web</span> &amp;{" "}
-              <span className="hl hl-coral">mobile</span>, done right — no middlemen, no fluff.
+              <span className="hl hl-coral">mobile</span>, done right. No middlemen, no fluff.
             </motion.h2>
 
             <div className="mt-14 grid grid-cols-1 gap-8 border-t border-line pt-10 sm:grid-cols-3">

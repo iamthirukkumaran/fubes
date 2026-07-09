@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 export function ColorBand() {
   return (
@@ -27,7 +28,7 @@ export function ColorBand() {
           className="group inline-flex flex-shrink-0 items-center gap-2 rounded-full bg-paper px-8 py-4 text-sm text-ink transition-transform hover:-translate-y-0.5"
         >
           Let&apos;s go
-          <span className="transition-transform group-hover:translate-x-1">→</span>
+          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
         </Link>
       </div>
     </section>

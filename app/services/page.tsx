@@ -37,7 +37,7 @@ export default function ServicesPage() {
               transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="mt-8 max-w-xl text-lg text-ink-soft"
             >
-              Design, web, mobile &amp; backend — the whole stack.
+              Design, web, mobile &amp; backend. The whole stack.
             </motion.p>
           </div>
         </section>

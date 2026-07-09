@@ -24,7 +24,7 @@ export default function StarBorder({
   return (
     <Link
       href={href}
-      className={`relative inline-block overflow-hidden rounded-full py-[1px] ${className}`}
+      className={`relative inline-block overflow-hidden rounded-full py-[1px] transition-transform hover:-translate-y-0.5 ${className}`}
     >
       <div
         className="star-movement-bottom absolute bottom-[-11px] right-[-250%] z-0 h-[50%] w-[300%] rounded-full opacity-70"

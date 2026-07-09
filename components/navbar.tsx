@@ -1,9 +1,10 @@
 "use client";
 
-import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { Menu, X, ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const links = [
@@ -15,123 +16,121 @@ const links = [
 
 export function Navbar() {
   const pathname = usePathname();
-  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const { scrollY } = useScroll();
+  const [hovered, setHovered] = useState<string | null>(null);
 
-  useMotionValueEvent(scrollY, "change", (latest) => setScrolled(latest > 24));
+  const active = hovered ?? pathname;
 
   return (
     <>
-      <header
-        className={cn(
-          "fixed inset-x-0 top-0 z-[90] transition-all duration-500",
-          scrolled
-            ? "border-b border-line bg-paper/80 backdrop-blur-md"
-            : "border-b border-transparent bg-transparent"
-        )}
-      >
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-8 md:py-5">
-          <Link href="/" className="group flex items-baseline gap-1.5">
-            <span className="font-display text-2xl tracking-tight text-ink">Fubbes</span>
+      <header className="fixed inset-x-0 top-3 z-[90] flex justify-center px-4 md:top-5">
+        <div className="flex w-full max-w-3xl items-center justify-between gap-2 rounded-full border border-line bg-paper/70 py-2 pl-5 pr-2 shadow-[0_6px_28px_rgba(13,13,13,0.08)] backdrop-blur-xl">
+          {/* Logo */}
+          <Link href="/" className="flex items-baseline gap-1.5">
+            <span className="font-display text-xl font-bold tracking-tight text-ink">Fubbes</span>
             <span className="h-1.5 w-1.5 rounded-full bg-coral" />
           </Link>
 
-          <nav className="hidden items-center gap-9 md:flex">
+          {/* Desktop links with sliding highlight */}
+          <nav
+            onMouseLeave={() => setHovered(null)}
+            className="hidden items-center md:flex"
+          >
             {links.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
+                onMouseEnter={() => setHovered(link.href)}
                 className={cn(
-                  "relative text-sm tracking-tight transition-colors",
-                  pathname === link.href
-                    ? "text-ink"
-                    : "text-ink-soft hover:text-ink"
+                  "relative rounded-full px-4 py-2 text-sm tracking-tight transition-colors",
+                  active === link.href ? "text-ink" : "text-ink-soft"
                 )}
               >
-                {link.label}
-                {pathname === link.href && (
+                {active === link.href && (
                   <motion.span
-                    layoutId="nav-underline"
-                    className="absolute -bottom-1.5 left-0 h-px w-full bg-ink"
+                    layoutId="nav-pill"
+                    className="absolute inset-0 -z-0 rounded-full bg-ink/[0.06]"
+                    transition={{ type: "spring", stiffness: 400, damping: 32 }}
                   />
                 )}
+                <span className="relative z-10">{link.label}</span>
               </Link>
             ))}
           </nav>
 
-          <div className="flex items-center gap-3">
+          {/* CTA + mobile toggle */}
+          <div className="flex items-center gap-2">
             <Link
               href="/contact"
-              className="hidden rounded-full bg-ink px-5 py-2.5 text-sm text-paper transition-transform hover:-translate-y-0.5 md:inline-block"
+              className="group hidden items-center gap-1.5 rounded-full bg-ink py-2.5 pl-5 pr-4 text-sm text-paper transition-transform hover:-translate-y-0.5 md:inline-flex"
             >
               Start a project
+              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Link>
             <button
               onClick={() => setOpen(true)}
               aria-label="Open menu"
-              className="flex h-10 w-10 items-center justify-center md:hidden"
+              className="flex h-10 w-10 items-center justify-center rounded-full text-ink md:hidden"
             >
-              <div className="space-y-1.5">
-                <span className="block h-px w-6 bg-ink" />
-                <span className="block h-px w-6 bg-ink" />
-              </div>
+              <Menu className="h-5 w-5" />
             </button>
           </div>
         </div>
       </header>
 
+      {/* Mobile full-screen menu */}
       <AnimatePresence>
         {open && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
             className="fixed inset-0 z-[200] flex flex-col bg-paper px-6 py-6 md:hidden"
           >
             <div className="flex items-center justify-between">
-              <span className="font-display text-2xl">Fubbes</span>
+              <span className="flex items-baseline gap-1.5">
+                <span className="font-display text-xl font-bold">Fubbes</span>
+                <span className="h-1.5 w-1.5 rounded-full bg-coral" />
+              </span>
               <button
                 onClick={() => setOpen(false)}
                 aria-label="Close menu"
                 className="flex h-10 w-10 items-center justify-center rounded-full border border-line"
               >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <line x1="18" y1="6" x2="6" y2="18" />
-                  <line x1="6" y1="6" x2="18" y2="18" />
-                </svg>
+                <X className="h-5 w-5" />
               </button>
             </div>
 
-            <nav className="mt-16 flex flex-col gap-3">
+            <nav className="mt-14 flex flex-col">
               {links.map((link, i) => (
                 <motion.div
                   key={link.href}
-                  initial={{ y: 24, opacity: 0 }}
+                  initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ delay: 0.08 + i * 0.06 }}
+                  className="border-b border-line"
                 >
                   <Link
                     href={link.href}
                     onClick={() => setOpen(false)}
-                    className="font-display text-5xl tracking-tight text-ink"
+                    className="flex items-center justify-between py-5 font-display text-4xl font-bold tracking-tight text-ink"
                   >
                     {link.label}
+                    <ArrowUpRight className="h-7 w-7 text-ink-soft" />
                   </Link>
                 </motion.div>
               ))}
             </nav>
 
-            <div className="mt-auto">
-              <Link
-                href="/contact"
-                onClick={() => setOpen(false)}
-                className="inline-block rounded-full bg-ink px-6 py-4 text-sm text-paper"
-              >
-                Start a project
-              </Link>
-            </div>
+            <Link
+              href="/contact"
+              onClick={() => setOpen(false)}
+              className="mt-auto inline-flex items-center justify-center gap-1.5 rounded-full bg-ink px-6 py-4 text-sm text-paper"
+            >
+              Start a project
+              <ArrowUpRight className="h-4 w-4" />
+            </Link>
           </motion.div>
         )}
       </AnimatePresence>
