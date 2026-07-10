@@ -59,11 +59,12 @@ export function Process() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, delay: i * 0.08, ease }}
-              className={`border-t-2 ${s.border} pt-6`}
+              whileHover={{ y: -6, scale: 1.01 }}
+              className={`rounded-2xl border border-line/70 bg-paper/70 p-6 shadow-[0_10px_30px_rgba(13,13,13,0.04)] ${s.border}`}
             >
               <span className={`font-display text-3xl font-semibold ${s.color}`}>{s.num}</span>
               <h3 className="mt-3 font-display text-2xl tracking-tight text-ink">{s.title}</h3>
-              <p className="mt-3 text-ink-soft">{s.desc}</p>
+              <p className="mt-3 text-base leading-7 text-ink-soft">{s.desc}</p>
             </motion.div>
           ))}
         </div>

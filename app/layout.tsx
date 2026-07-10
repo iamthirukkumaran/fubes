@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Inter, Caveat } from "next/font/google";
+import { Plus_Jakarta_Sans, Inter, Manrope } from "next/font/google";
 import "./globals.css";
 
-// Characterful modern grotesque for display headings — bold, award-worthy.
-const bricolage = Bricolage_Grotesque({
+// Strong editorial sans for headings and display text.
+const displayFont = Plus_Jakarta_Sans({
   variable: "--font-display",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
   display: "swap",
 });
 
-// Clean grotesque for UI, labels and body copy.
+// Clean sans for UI, labels and body copy.
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
@@ -18,8 +18,8 @@ const inter = Inter({
   display: "swap",
 });
 
-// Handwritten font for playful accents, stickers and scribbles.
-const caveat = Caveat({
+// Refined support font for accent moments.
+const manrope = Manrope({
   variable: "--font-caveat",
   subsets: ["latin"],
   weight: ["500", "600", "700"],
@@ -76,7 +76,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${bricolage.variable} ${inter.variable} ${caveat.variable} antialiased bg-paper text-ink`}
+        className={`${displayFont.variable} ${inter.variable} ${manrope.variable} antialiased bg-paper text-ink`}
       >
         <Preloader />
         <ClickSpark sparkColor="#0d0d0d" sparkCount={10} sparkRadius={22} duration={520} />

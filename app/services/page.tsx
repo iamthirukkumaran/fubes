@@ -10,7 +10,7 @@ import { Footer } from "@/components/footer";
 
 export default function ServicesPage() {
   return (
-    <div className="relative min-h-screen bg-paper">
+    <div className="page-shell relative min-h-screen bg-paper">
       <Navbar />
       <main>
         <section className="px-5 pt-40 pb-8 md:px-8 md:pt-52 md:pb-12">

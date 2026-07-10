@@ -45,7 +45,7 @@ export function AboutContent() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: i * 0.08, ease }}
                 >
-                  <div className="font-display text-4xl tracking-tight text-ink md:text-5xl">
+                  <div className="font-display text-4xl font-semibold tracking-tight text-ink md:text-5xl">
                     {s.val}
                   </div>
                   <div className="mt-2 text-sm text-ink-soft">{s.label}</div>

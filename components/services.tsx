@@ -65,6 +65,7 @@ export function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.7, ease, delay: (i % 2) * 0.05 }}
+              whileHover={{ y: -4, scale: 1.01 }}
               className="group grid grid-cols-1 gap-6 border-b border-line py-10 md:grid-cols-12 md:gap-8 md:py-14"
             >
               <div className="flex items-start gap-5 md:col-span-4">
@@ -73,7 +74,7 @@ export function Services() {
                   {s.title}
                 </h3>
               </div>
-              <p className={`handwritten text-2xl md:col-span-5 md:pt-2 ${s.color}`}>{s.quip}</p>
+              <p className={`text-lg font-medium leading-8 text-ink-soft md:col-span-5 md:pt-2 ${s.color}`}>{s.quip}</p>
               <div className="flex flex-wrap content-start gap-2 md:col-span-3 md:justify-end md:pt-3">
                 {s.tags.map((t) => (
                   <span

@@ -43,7 +43,7 @@ export function Testimonials() {
             <h2 className="mt-5 font-display text-4xl font-bold leading-[1.02] tracking-[-0.03em] text-ink md:text-5xl">
               Questions, <span className="hl hl-lime">answered</span>
             </h2>
-            <p className="mt-3 handwritten text-2xl text-violet">ask us anything, really</p>
+            <p className="mt-3 text-base font-medium uppercase tracking-[0.24em] text-violet">Straight answers, no fluff</p>
           </div>
 
           <div className="md:col-span-8">
@@ -54,7 +54,7 @@ export function Testimonials() {
                   <div key={i} className="border-b border-line">
                     <button
                       onClick={() => setOpen(isOpen ? null : i)}
-                      className="flex w-full items-center justify-between gap-6 py-6 text-left"
+                      className="flex w-full items-center justify-between gap-6 py-6 text-left transition-colors hover:bg-paper-2/70"
                     >
                       <span className="font-display text-xl tracking-tight text-ink md:text-2xl">
                         {f.q}

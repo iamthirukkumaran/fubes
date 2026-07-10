@@ -24,7 +24,7 @@ export function Navbar() {
   return (
     <>
       <header className="fixed inset-x-0 top-3 z-[90] flex justify-center px-4 md:top-5">
-        <div className="flex w-full max-w-3xl items-center justify-between gap-2 rounded-full border border-line bg-paper/70 py-2 pl-5 pr-2 shadow-[0_6px_28px_rgba(13,13,13,0.08)] backdrop-blur-xl">
+        <div className="flex w-full max-w-4xl items-center justify-between gap-2 rounded-full border border-line/80 bg-paper/80 py-2 pl-5 pr-2 shadow-[0_16px_44px_rgba(13,13,13,0.06)] backdrop-blur-xl">
           {/* Logo */}
           <Link href="/" className="flex items-baseline gap-1.5">
             <span className="font-display text-xl font-bold tracking-tight text-ink">Fubbes</span>
@@ -42,7 +42,7 @@ export function Navbar() {
                 href={link.href}
                 onMouseEnter={() => setHovered(link.href)}
                 className={cn(
-                  "relative rounded-full px-4 py-2 text-sm tracking-tight transition-colors",
+                  "relative rounded-full px-4 py-2 text-sm font-medium tracking-[0.01em] transition-colors",
                   active === link.href ? "text-ink" : "text-ink-soft"
                 )}
               >
@@ -62,7 +62,7 @@ export function Navbar() {
           <div className="flex items-center gap-2">
             <Link
               href="/contact"
-              className="group hidden items-center gap-1.5 rounded-full bg-ink py-2.5 pl-5 pr-4 text-sm text-paper transition-transform hover:-translate-y-0.5 md:inline-flex"
+              className="group hidden items-center gap-1.5 rounded-full bg-ink py-2.5 pl-5 pr-4 text-sm font-medium text-paper transition-transform hover:-translate-y-0.5 md:inline-flex"
             >
               Start a project
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

@@ -37,8 +37,8 @@ export function ContactCTA() {
             <span className="display-italic">Let&apos;s make it </span>
             <span className="hl hl-coral">real.</span>
           </h2>
-          <p className="mt-8 max-w-md text-lg text-ink-soft">
-            Tell us what you&apos;re building. We reply within a day. No sales robots.
+          <p className="mt-8 max-w-md text-lg leading-8 text-ink-soft">
+            Tell us what you&apos;re building. We respond with clarity, direction, and a thoughtful next step.
           </p>
 
           <div className="mt-12 flex flex-wrap items-center gap-4">

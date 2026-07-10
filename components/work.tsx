@@ -37,7 +37,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
     <div className="relative transition-transform duration-300 hover:-translate-y-1.5">
       <SpotlightCard
         spotlightColor={project.spot}
-        className={`aspect-[4/3] w-full rounded-2xl border-2 border-ink ${project.tint}`}
+        className={`aspect-[4/3] w-full rounded-[1.75rem] border border-line bg-paper/80 shadow-[0_18px_40px_rgba(13,13,13,0.06)] ${project.tint}`}
       >
         {project.image ? (
           // eslint-disable-next-line @next/next/no-img-element
@@ -91,9 +91,9 @@ export function Work() {
         <div className="mb-16 flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div>
             <SectionHeading index="02" eyebrow="Selected work" title="Recent projects" />
-            <p className="mt-3 inline-flex items-center gap-2 handwritten text-2xl text-coral">
+            <p className="mt-3 inline-flex items-center gap-2 text-base font-medium uppercase tracking-[0.24em] text-coral">
               <Eye className="h-5 w-5" strokeWidth={2} />
-              your project could live here
+              your next launch could be next
             </p>
           </div>
           <Link

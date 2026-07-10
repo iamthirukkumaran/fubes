@@ -23,7 +23,7 @@ export default function Home() {
   });
 
   return (
-    <div className="relative bg-paper text-ink">
+    <div className="page-shell relative bg-paper text-ink">
       <motion.div
         className="fixed left-0 right-0 top-0 z-[100] h-1 origin-left bg-gradient-to-r from-blue via-violet to-coral"
         style={{ scaleX }}

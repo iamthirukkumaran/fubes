@@ -25,6 +25,9 @@ export function ClientLogos() {
       <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l from-paper to-transparent" />
 
       <motion.div
+        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, y: 16 }}
+        viewport={{ once: true, margin: "-80px" }}
         animate={{ x: "-50%" }}
         transition={{ duration: 34, repeat: Infinity, ease: "linear" }}
         className="flex w-max items-center gap-10 pr-10"

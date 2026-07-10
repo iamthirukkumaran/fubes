@@ -31,7 +31,7 @@ export function SectionHeading({
       className={className}
     >
       <div className="flex items-center gap-3">
-        <span className="grid h-6 w-6 flex-shrink-0 place-items-center rounded-full border border-line text-[10px] font-medium tabular-nums text-ink-soft">
+        <span className="grid h-6 w-6 flex-shrink-0 place-items-center rounded-full border border-line bg-paper/80 text-[10px] font-semibold tabular-nums text-ink-soft shadow-[0_6px_16px_rgba(13,13,13,0.04)]">
           {index}
         </span>
         <span className="eyebrow">{eyebrow}</span>
@@ -44,7 +44,7 @@ export function SectionHeading({
       >
         {title}
       </h2>
-      {note && <p className="mt-3 handwritten text-2xl text-blue">{note}</p>}
+      {note && <p className="mt-3 text-base font-medium leading-7 text-ink-soft">{note}</p>}
     </motion.div>
   );
 }

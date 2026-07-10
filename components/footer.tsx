@@ -27,12 +27,12 @@ export function Footer() {
               <span className="font-display text-3xl tracking-tight text-ink">Fubbes</span>
               <span className="h-1.5 w-1.5 rounded-full bg-coral" />
             </div>
-            <p className="mt-4 max-w-sm text-ink-soft">
+            <p className="mt-4 max-w-sm text-base leading-7 text-ink-soft">
               A small studio building websites and mobile apps for ambitious brands.
             </p>
             <a
               href={`mailto:${CONTACT_EMAIL}`}
-              className="mt-6 inline-block font-display text-2xl tracking-tight text-ink underline decoration-line underline-offset-4 transition-colors hover:decoration-ink md:text-3xl"
+              className="mt-6 inline-block font-display text-2xl font-semibold tracking-tight text-ink underline decoration-line underline-offset-4 transition-colors hover:decoration-ink md:text-3xl"
             >
               {CONTACT_EMAIL}
             </a>
@@ -79,7 +79,7 @@ export function Footer() {
 
         <div className="mt-8 flex flex-col items-start justify-between gap-4 border-t border-line pt-6 text-sm text-ink-soft md:flex-row md:items-center">
           <span>© {new Date().getFullYear()} Fubbes. All rights reserved.</span>
-          <span className="font-display italic">Thirukkumaran &amp; Anbu Arasu</span>
+          <span className="font-display text-base font-medium italic">Thirukkumaran &amp; Anbu Arasu</span>
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className="group inline-flex items-center gap-1.5 transition-colors hover:text-ink"
