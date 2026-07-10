@@ -34,7 +34,7 @@ const ease = [0.16, 1, 0.3, 1] as const;
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   const inner = (
-    <div className="relative transition-transform duration-300 hover:-translate-y-1.5">
+    <motion.div className="relative" whileHover={{ y: -6, scale: 1.01 }} transition={{ duration: 0.28 }}>
       <SpotlightCard
         spotlightColor={project.spot}
         className={`aspect-[4/3] w-full rounded-[1.75rem] border border-line bg-paper/80 shadow-[0_18px_40px_rgba(13,13,13,0.06)] ${project.tint}`}
@@ -68,13 +68,13 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         </div>
         <span className="font-inter text-sm text-ink-soft">{project.year}</span>
       </div>
-    </div>
+    </motion.div>
   );
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 28 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 28, scale: 0.98 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.7, ease, delay: (index % 2) * 0.08 }}
       className={index % 2 === 1 ? "md:mt-20" : ""}

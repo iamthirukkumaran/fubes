@@ -33,7 +33,7 @@ export function Hero() {
   const ctaY = useTransform(scrollY, [0, 420], [0, -10]);
 
   return (
-    <section className="relative overflow-hidden px-5 pt-36 pb-20 md:px-8 md:pt-48 md:pb-24">
+    <section id="hero" data-offset="140" className="relative overflow-hidden px-5 pt-36 pb-20 md:px-8 md:pt-48 md:pb-24">
       <motion.div
         aria-hidden
         className="pointer-events-none absolute inset-x-0 top-0 h-[32rem]"
@@ -47,15 +47,7 @@ export function Hero() {
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
           <div>
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease }}
-              className="mb-8 inline-flex items-center gap-2.5 rounded-full border border-line bg-paper/80 px-4 py-2 shadow-[0_8px_24px_rgba(13,13,13,0.04)]"
-            >
-              <span className="h-2.5 w-2.5 rounded-full bg-blue" />
-              <span className="eyebrow">Fubbes · strategy • design • development</span>
-            </motion.div>
+            
 
             <motion.h1
               initial={{ opacity: 0, y: 24 }}

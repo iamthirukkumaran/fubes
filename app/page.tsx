@@ -13,6 +13,7 @@ import { Team } from "@/components/founder";
 import { Testimonials } from "@/components/testimonials";
 import { ContactCTA } from "@/components/contact-cta";
 import { Footer } from "@/components/footer";
+import SideNav from "@/components/side-nav";
 
 export default function Home() {
   const { scrollYProgress } = useScroll();
@@ -24,6 +25,7 @@ export default function Home() {
 
   return (
     <div className="page-shell relative bg-paper text-ink">
+      <SideNav />
       <motion.div
         className="fixed left-0 right-0 top-0 z-[100] h-1 origin-left bg-gradient-to-r from-blue via-violet to-coral"
         style={{ scaleX }}

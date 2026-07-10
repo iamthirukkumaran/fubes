@@ -52,9 +52,35 @@
   h3,
   h4 {
     font-family: var(--font-display), system-ui, sans-serif;
-    letter-spacing: -0.035em;
-    font-weight: 700;
+    letter-spacing: -0.045em;
+    font-weight: 800;
     text-wrap: balance;
+  }
+
+  /* Side nav buttons */
+  .side-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.8);
+    border: 1px solid var(--color-line);
+    color: var(--color-ink);
+    transition: transform 220ms ease, background 220ms ease, box-shadow 220ms ease;
+  }
+  .side-btn:hover {
+    transform: translateY(-4px);
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(13,13,13,0.08);
+  }
+  .side-btn.active {
+    background: linear-gradient(90deg, var(--color-blue), var(--color-coral));
+    color: white;
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(13,13,13,0.12);
+    border-color: transparent;
   }
 
   p {
